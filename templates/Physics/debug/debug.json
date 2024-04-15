@@ -1,0 +1,58 @@
+[
+    {
+        "text": [
+            "Is the <C> <S> moving <V> at the beginning?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "objects"
+            },
+            {
+                "side_inputs": [
+                    "<C>",
+                    "<S>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "get_start_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    2
+                ],
+                "type": "query_linear_velocity"
+            },
+            {
+                "side_inputs": [
+                    "V"
+                ],
+                "inputs": [
+                    3
+                ],
+                "type": "equal"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S>"
+            },
+            {
+                "type": "LinearVelocity",
+                "name": "<V>"
+            }
+        ],
+        "constraints": []
+    }
+]

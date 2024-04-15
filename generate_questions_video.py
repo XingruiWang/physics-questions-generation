@@ -98,6 +98,8 @@ def precompute_filter_options(scene_struct, metadata):
 
   if metadata['dataset'] == 'CLEVR-v1.0':
     attr_keys = ['size', 'color', 'material', 'shape']
+  elif metadata['dataset'] == 'SuperCLEVR-Physics':
+    attr_keys = ['color', 'shape']
   else:
     assert False, 'Unrecognized dataset'
 
@@ -110,8 +112,7 @@ def precompute_filter_options(scene_struct, metadata):
     masks.append(mask)
 
   for object_idx, obj in enumerate(scene_struct['objects']):
-    if metadata['dataset'] == 'CLEVR-v1.0':
-      keys = [tuple(obj[k] for k in attr_keys)]
+    keys = [tuple(obj[k] for k in attr_keys)]
 
     for mask in masks:
       for key in keys:
@@ -148,6 +149,8 @@ def add_empty_filter_options(attribute_map, metadata, num_to_add):
 
   if metadata['dataset'] == 'CLEVR-v1.0':
     attr_keys = ['Size', 'Color', 'Material', 'Shape']
+  elif metadata['dataset'] == 'SuperCLEVR-Physics':
+    attr_keys = ['Color', 'Shape']
   else:
     assert False, 'Unrecognized dataset'
   
@@ -161,7 +164,7 @@ def add_empty_filter_options(attribute_map, metadata, num_to_add):
     if k not in attribute_map:
       attribute_map[k] = []
 
-
+# won't use in physics
 def find_relate_filter_options(object_idx, scene_struct, metadata,
     unique=False, include_zero=False, trivial_frac=0.1):
   options = {}
@@ -203,7 +206,7 @@ def node_shallow_copy(node):
     new_node['side_inputs'] = node['side_inputs']
   return new_node
 
-
+# Skip this function?
 def other_heuristic(text, param_vals):
   """
   Post-processing heuristic to handle the word "other"
@@ -252,12 +255,16 @@ def instantiate_templates_dfs(scene_struct, template, metadata, answer_counts,
   }
   states = [initial_state]
   final_states = []
+  
   while states:
+    import ipdb; ipdb.set_trace()
     state = states.pop()
 
     # Check to make sure the current state is valid
     q = {'nodes': state['nodes']}
     outputs = qeng.answer_question(q, metadata, scene_struct, all_outputs=True)
+    print(outputs)
+
     answer = outputs[-1]
     if answer == '__INVALID__': continue
 
@@ -344,6 +351,7 @@ def instantiate_templates_dfs(scene_struct, template, metadata, answer_counts,
     next_node = template['nodes'][state['next_template_node']]
     next_node = node_shallow_copy(next_node)
 
+    # Needs to add 
     special_nodes = {
         'filter_unique', 'filter_count', 'filter_exist', 'filter',
         'relate_filter', 'relate_filter_unique', 'relate_filter_count',

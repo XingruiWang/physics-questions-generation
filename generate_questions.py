@@ -98,6 +98,8 @@ def precompute_filter_options(scene_struct, metadata):
 
   if metadata['dataset'] == 'CLEVR-v1.0':
     attr_keys = ['size', 'color', 'material', 'shape']
+  elif metadata['dataset'] == 'SuperCLEVR-Physics':
+    attr_keys = ['color', 'shape']
   else:
     assert False, 'Unrecognized dataset'
 
@@ -110,8 +112,7 @@ def precompute_filter_options(scene_struct, metadata):
     masks.append(mask)
 
   for object_idx, obj in enumerate(scene_struct['objects']):
-    if metadata['dataset'] == 'CLEVR-v1.0':
-      keys = [tuple(obj[k] for k in attr_keys)]
+    keys = [tuple(obj[k] for k in attr_keys)]
 
     for mask in masks:
       for key in keys:
@@ -148,6 +149,8 @@ def add_empty_filter_options(attribute_map, metadata, num_to_add):
 
   if metadata['dataset'] == 'CLEVR-v1.0':
     attr_keys = ['Size', 'Color', 'Material', 'Shape']
+  elif metadata['dataset'] == 'SuperCLEVR-Physics':
+    attr_keys = ['Color', 'Shape']
   else:
     assert False, 'Unrecognized dataset'
   
@@ -161,7 +164,7 @@ def add_empty_filter_options(attribute_map, metadata, num_to_add):
     if k not in attribute_map:
       attribute_map[k] = []
 
-
+# won't use in physics
 def find_relate_filter_options(object_idx, scene_struct, metadata,
     unique=False, include_zero=False, trivial_frac=0.1):
   options = {}
@@ -203,7 +206,7 @@ def node_shallow_copy(node):
     new_node['side_inputs'] = node['side_inputs']
   return new_node
 
-
+# Skip this function?
 def other_heuristic(text, param_vals):
   """
   Post-processing heuristic to handle the word "other"
