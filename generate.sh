@@ -12,17 +12,18 @@
 #     --scene_start_idx 0 \
 #     --num_scenes 100
 
+MODE=val
 python scripts/generate_questions_video.py \
-    --input_scene_file data/SuperCLEVR_physics_train_anno.json \
-    --output_questions_file output/train/questions_physics_predictive.json \
+    --input_scene_file data/SuperCLEVR_physics_${MODE}_anno.json \
+    --output_questions_file output/${MODE}/questions_physics_predictive.json \
     --template_dir templates/physics_predictive \
     --scene_start_idx 0 \
     --num_scenes 1000 \
     --instances_per_template 3
 
 python scripts/generate_questions_video.py \
-    --input_scene_file data/SuperCLEVR_physics_train_anno.json \
-    --output_questions_file output/train/questions_physics_factual.json \
+    --input_scene_file data/SuperCLEVR_physics_${MODE}_anno.json \
+    --output_questions_file output/${MODE}/questions_physics_factual.json \
     --template_dir templates/physics_factual \
     --scene_start_idx 0 \
     --num_scenes 1000 \
