@@ -312,17 +312,6 @@ def instantiate_templates_dfs(scene_struct, template, metadata, answer_counts,
             print(outputs[j])
           skip_state = True
           break
-      elif constraint['type'] == 'IN_FUTURE':
-        i = constraint['params'][0]
-        i = state['input_map'].get(i, None)
-        if i is not None:
-          
-          if outputs[i]:
-            import ipdb; ipdb.set_trace()
-            for o in outputs[i]:
-              if o < 20:
-                skip_state = True
-                break
         
       else:
         assert False, 'Unrecognized constraint type "%s"' % constraint['type']
@@ -521,6 +510,15 @@ def instantiate_templates_dfs(scene_struct, template, metadata, answer_counts,
 
   return text_questions, structured_questions, answers
 
+def filter_future(scene):
+  collision = scene['collisions']
+  future_collision = []
+  for c in collision:
+    if c['frame'] > 30:
+      future_collision.append(c)
+  scene['collisions'] = future_collision
+  return scene
+
 
 
 def replace_optionals(s):
@@ -626,6 +624,7 @@ def main(args):
   scene_count = 0
   for i, scene in enumerate(all_scenes):
     # import ipdb; ipdb.set_trace()
+    scene = filter_future(scene)
     scene_fn = scene['scene_filename']
     scene_struct = scene
     print('starting image %s (%d / %d) | Generated %d total questions'

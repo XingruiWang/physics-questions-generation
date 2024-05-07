@@ -79,15 +79,9 @@
             {
                 "params": [
                     1,
-                    3
+                    5
                 ],
                 "type": "OUT_NEQ"
-            },
-            {
-                "params": [
-                    6
-                ],
-                "type": "IN_FUTURE"
             }
         ]
     }
