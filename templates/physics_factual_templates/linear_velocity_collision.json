@@ -1,0 +1,758 @@
+[
+    {
+        "text": [
+            "Is the <C1> <S1> moving fast when it collides with the <C2> <S2>?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    4,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    5,
+                    3
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    6
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    7
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    8
+                ],
+                "type": "query_moving_fast"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    },
+    {
+        "text": [
+            "Is the <C1> <S1> moving fast when the <C2> <S2> collides with it?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    4,
+                    3
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    5,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    6
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    7
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    8
+                ],
+                "type": "query_moving_fast"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    },
+    {
+        "text": [
+            "Is the <C1> <S1> moving fast when the <C2> <S2> collides with the <C3> <S3>?",
+            "Is the <C1> <S1> moving fast after the collision of <C2> <S2> and the <C3> <S3>?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C3>",
+                    "<S3>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    6,
+                    3
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    7,
+                    5
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    8
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    9
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    10
+                ],
+                "type": "query_moving_fast"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            },
+            {
+                "type": "Color",
+                "name": "<C3>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S3>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    1,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    3,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    },
+    {
+        "text": [
+            "Is the <C1> <S1> moving faster than a <C2> <S2> when they collide?",
+            "Is the <C1> <S1> moving faster than a <C2> <S2> after their collision?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    4,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    5,
+                    3
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    6
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    7
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    3,
+                    8
+                ],
+                "type": "greater_linear_velocities"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    },
+    {
+        "text": [
+            "Is the <C1> <S1> moving faster than a <C2> <S2> when it collides with <C3> <S3>?",
+            "Is the <C1> <S1> moving faster than a <C2> <S2> after it collides with <C3> <S3>?",
+            "Is the <C1> <S1> moving faster than a <C2> <S2> after the collides with <C3> <S3>?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C3>",
+                    "<S3>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    6,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    7,
+                    5
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    8
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    9
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    3,
+                    10
+                ],
+                "type": "greater_linear_velocities"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            },
+            {
+                "type": "Color",
+                "name": "<C3>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S3>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    1,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            }, 
+            {
+                "params": [
+                    3,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            }
+
+        ]
+    },
+    {
+        "text": [
+            "Is the <C1> <S1> moving faster than a <C2> <S2> when the <C3> <S3> collides with a <C4> <S4>?",
+            "Is the <C1> <S1> moving faster than a <C2> <S2> after the collision of the <C3> <S3> and the <C4> <S4>?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    2
+                ],
+                "type": "filter_unique"
+            },
+
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C3>",
+                    "<S3>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C4>",
+                    "<S4>"
+                ],
+                "inputs": [
+                    6
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    8,
+                    5
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    9,
+                    7
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    10
+                ],
+                "type": "unique"
+            },
+            {
+                "inputs": [
+                    11
+                ],
+                "type": "get_frame"
+            },
+            {
+                "inputs": [
+                    1,
+                    3,
+                    12
+                ],
+                "type": "greater_linear_velocities"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            },
+            {
+                "type": "Color",
+                "name": "<C3>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S3>"
+            },
+            {
+                "type": "Color",
+                "name": "<C4>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S4>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    1,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    1,
+                    7
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    3,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    3,
+                    7
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    5,
+                    7
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    }
+]

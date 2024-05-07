@@ -1,0 +1,85 @@
+[
+    {
+        "text": [
+            "Is the <C> <S>'s engine is on at the beginning?",
+            "Is the <C> <S> is accelerating at the beginning?",
+            "Does the <C> <S> begin with its engine active?",
+            "At the start, is the <C> <S>'s engine running?",
+            "Is the <C> <S> starting to move faster?",
+            "Is there an increase in velocity for the <C> <S> at the beginning?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C>",
+                    "<S>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [
+                    1
+                ],
+                "type": "query_engine"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S>"
+            }
+        ],
+        "constraints": []
+    },
+    {
+        "text": [
+            "Is the <C> <S> floating at the beginning?",
+            "Is the <C> <S> floating when it first appeared?",
+            "Is the <C> <S> floating in the air from the start?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C>",
+                    "<S>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [
+                    1
+                ],
+                "type": "query_floating"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S>"
+            }
+        ],
+        "constraints": []
+    }
+]

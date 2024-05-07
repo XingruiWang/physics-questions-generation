@@ -1,0 +1,264 @@
+[
+    {
+        "text": [
+            "Dose the <C1> <S1> collide with the <C2> <S2> in the given frames?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    2,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [
+                    3,
+                    5
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    6
+                ],
+                "type": "exist"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    3
+                ],
+                "type": "OUT_NEQ"
+            }
+        ]
+    },
+    {
+        "text": [
+            "What is the color of the <C1> <S1> which collides with the <C2> <S2> in the given frames?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    2,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    3,
+                    1
+                ],
+                "type": "get_all_col_partners"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [
+                    5
+                ],
+                "type": "query_color"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    "<C1>"
+                ],
+                "type": "NULL"
+            }
+        ]
+    },
+    {
+        "text": [
+            "What is the shape of the <C1> <S1> which collides with the <C2> <S2> in the given frames?"
+        ],
+        "nodes": [
+            {
+                "inputs": [],
+                "type": "scene"
+            },
+            {
+                "side_inputs": [
+                    "<C2>",
+                    "<S2>"
+                ],
+                "inputs": [
+                    0
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [],
+                "type": "collisionEvent"
+            },
+            {
+                "inputs": [
+                    2,
+                    1
+                ],
+                "type": "filter_collision"
+            },
+            {
+                "inputs": [
+                    3,
+                    1
+                ],
+                "type": "get_all_col_partners"
+            },
+            {
+                "side_inputs": [
+                    "<C1>",
+                    "<S1>"
+                ],
+                "inputs": [
+                    4
+                ],
+                "type": "filter_unique"
+            },
+            {
+                "inputs": [
+                    5
+                ],
+                "type": "query_shape"
+            }
+        ],
+        "params": [
+            {
+                "type": "Color",
+                "name": "<C1>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S1>"
+            },
+            {
+                "type": "Color",
+                "name": "<C2>"
+            },
+            {
+                "type": "Shape",
+                "name": "<S2>"
+            }
+        ],
+        "constraints": [
+            {
+                "params": [
+                    1,
+                    5
+                ],
+                "type": "OUT_NEQ"
+            },
+            {
+                "params": [
+                    "<S1>"
+                ],
+                "type": "NULL"
+            }
+        ]
+    }
+]

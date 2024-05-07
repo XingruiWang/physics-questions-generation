@@ -1,14 +1,40 @@
 {
-  "dataset": "CLEVR-v1.0",
+  "dataset": "SuperCLEVR-Physics",
   "types": {
     "Object": null,
     "ObjectSet": null,
+    "CollisionEvent": null,
+    "CollisionEventSet": null,
+    "Direction": [
+      "left",
+      "right",
+      "up",
+      "down",
+      "front",
+      "back"
+    ],
     "Integer": null,
     "Bool": null,
+    "FrameID": null,
     "Shape": [
-      "cube",
-      "sphere",
-      "cylinder"
+      "airliner",
+      "fighter",
+      "jet",
+      "mountain",
+      "tandem",
+      "utility",
+      "articulated",
+      "double",
+      "school",
+      "minivan",
+      "sedan",
+      "suv",
+      "truck",
+      "wagon",
+      "chopper",
+      "cruiser",
+      "dirtbike",
+      "scooter"
     ],
     "Color": [
       "gray",
@@ -19,20 +45,6 @@
       "purple",
       "cyan",
       "yellow"
-    ],
-    "Relation": [
-      "left",
-      "right",
-      "behind",
-      "front"
-    ],
-    "Size": [
-      "small",
-      "large"
-    ],
-    "Material": [
-      "rubber",
-      "metal"
     ]
   },
   "functions": [
@@ -60,28 +72,6 @@
       ],
       "side_inputs": [
         "Shape"
-      ],
-      "output": "ObjectSet",
-      "terminal": false
-    },
-    {
-      "name": "filter_size",
-      "inputs": [
-        "ObjectSet"
-      ],
-      "side_inputs": [
-        "Size"
-      ],
-      "output": "ObjectSet",
-      "terminal": false
-    },
-    {
-      "name": "filter_material",
-      "inputs": [
-        "ObjectSet"
-      ],
-      "side_inputs": [
-        "Material"
       ],
       "output": "ObjectSet",
       "terminal": false
@@ -149,22 +139,6 @@
       "terminal": true
     },
     {
-      "name": "query_size",
-      "inputs": [
-        "Object"
-      ],
-      "output": "Size",
-      "terminal": true
-    },
-    {
-      "name": "query_material",
-      "inputs": [
-        "Object"
-      ],
-      "output": "Material",
-      "terminal": true
-    },
-    {
       "name": "exist",
       "inputs": [
         "ObjectSet"
@@ -200,68 +174,7 @@
       "terminal": true
     },
     {
-      "name": "less_than",
-      "inputs": [
-        "Integer",
-        "Integer"
-      ],
-      "output": "Bool",
-      "terminal": true
-    },
-    {
-      "name": "greater_than",
-      "inputs": [
-        "Integer",
-        "Integer"
-      ],
-      "output": "Bool",
-      "terminal": true
-    },
-    {
-      "name": "equal_size",
-      "inputs": [
-        "Size",
-        "Size"
-      ],
-      "output": "Bool",
-      "terminal": true
-    },
-    {
-      "name": "equal_material",
-      "inputs": [
-        "Material",
-        "Material"
-      ],
-      "output": "Bool",
-      "terminal": true
-    },
-    {
-      "name": "equal_object",
-      "inputs": [
-        "Object",
-        "Object"
-      ],
-      "output": "Bool",
-      "terminal": true
-    },
-    {
-      "name": "same_size",
-      "inputs": [
-        "Object"
-      ],
-      "output": "ObjectSet",
-      "terminal": false
-    },
-    {
       "name": "same_color",
-      "inputs": [
-        "Object"
-      ],
-      "output": "ObjectSet",
-      "terminal": false
-    },
-    {
-      "name": "same_material",
       "inputs": [
         "Object"
       ],
@@ -282,10 +195,8 @@
         "ObjectSet"
       ],
       "side_inputs": [
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
+        "Shape",
+        "Color"
       ],
       "output": "ObjectSet",
       "terminal": false,
@@ -297,10 +208,8 @@
         "ObjectSet"
       ],
       "side_inputs": [
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
+        "Shape",
+        "Color"
       ],
       "output": "Object",
       "terminal": false,
@@ -312,10 +221,8 @@
         "ObjectSet"
       ],
       "side_inputs": [
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
+        "Shape",
+        "Color"
       ],
       "output": "Integer",
       "terminal": true,
@@ -327,78 +234,130 @@
         "ObjectSet"
       ],
       "side_inputs": [
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
+        "Shape",
+        "Color"
       ],
       "output": "Bool",
       "terminal": true,
       "template_only": true
     },
     {
-      "name": "relate_filter",
+      "name": "filter_same_shape",
       "inputs": [
         "Object"
-      ],
-      "side_inputs": [
-        "Relation",
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
-      ],
-      "output": "ObjectSet",
-      "terminal": false,
-      "template_only": true
-    },
-    {
-      "name": "relate_filter_unique",
-      "inputs": [
-        "Object"
-      ],
-      "side_inputs": [
-        "Relation",
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
       ],
       "output": "Object",
       "terminal": false,
       "template_only": true
     },
     {
-      "name": "relate_filter_count",
+      "name": "come_in_frame",
       "inputs": [
         "Object"
       ],
-      "side_inputs": [
-        "Relation",
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
-      ],
-      "output": "Integer",
+      "output": "FrameID",
       "terminal": false,
-      "template_only": true
+      "template_only": false
     },
     {
-      "name": "relate_filter_exist",
+      "name": "query_moving",
+      "inputs": [
+        "Object",
+        "FrameID"
+      ],
+      "output": "Bool",
+      "terminal": true
+    },
+    {
+      "name": "query_moving_fast",
+      "inputs": [
+        "Object",
+        "FrameID"
+      ],
+      "output": "Bool",
+      "terminal": true
+    },
+    {
+      "name": "query_moving_direction",
+      "inputs": [
+        "Object",
+        "FrameID"
+      ],
+      "output": "Direction",
+      "terminal": true
+    },
+    {
+      "name": "greater_linear_velocities",
+      "inputs": [
+        "Object",
+        "Object",
+        "FrameID"
+      ],
+      "output": "Bool",
+      "terminal": true
+    },
+    {
+      "name": "less_linear_velocities",
+      "inputs": [
+        "Object",
+        "Object",
+        "FrameID"
+      ],
+      "output": "Bool",
+      "terminal": true
+    },
+    {
+      "name": "filter_collision",
+      "inputs": [
+        "CollisionEventSet",
+        "Object"
+      ],
+      "output": "CollisionEventSet",
+      "terminal": false,
+      "template_only": false
+    },
+    {
+      "name": "get_frame",
+      "inputs": [
+        "CollisionEvent"
+      ],
+      "output": "FrameID",
+      "terminal": false,
+      "template_only": false
+    },
+    {
+      "name": "query_engine",
       "inputs": [
         "Object"
       ],
-      "side_inputs": [
-        "Relation",
-        "Size",
-        "Color",
-        "Material",
-        "Shape"
+      "output": "Bool",
+      "terminal": true
+    },
+    {
+      "name": "query_floating",
+      "inputs": [
+        "Object"
       ],
       "output": "Bool",
-      "terminal": false,
-      "template_only": true
+      "terminal": true
+    },
+    {
+      "name": "get_col_partner",
+      "inputs": [
+        "CollisionEvent",
+        "Object"
+      ],
+      "output": "Object",
+      "terminal": false
+    },
+    {
+      "name": "get_all_col_partners",
+      "inputs": [
+        "CollisionEventSet",
+        "Object"
+      ],
+      "output": "ObjectSet",
+      "terminal": false
     }
   ]
 }
